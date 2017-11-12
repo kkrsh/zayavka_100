@@ -3,13 +3,13 @@ package ru.balletacademy.zayavlenie.ui;
 import com.vaadin.data.BeanValidationBinder;
 import com.vaadin.ui.*;
 import ru.balletacademy.zayavlenie.backend.data.EducationalProgramType;
-import ru.balletacademy.zayavlenie.backend.data.entity.SubmittedForm;
+import ru.balletacademy.zayavlenie.backend.data.entity.PersonalForm;
 
 public class SpoViewDesign extends VerticalLayout
 {
 
-    protected BeanValidationBinder<SubmittedForm> binder;
-    protected boolean hasChanges;
+    protected BeanValidationBinder<PersonalForm> binder;
+    protected boolean                            hasChanges;
 
     protected TextField parentName;
     protected TextField childName;
@@ -103,7 +103,7 @@ public class SpoViewDesign extends VerticalLayout
 
         // Binder takes care of binding Vaadin fields defined as Java member
         // fields in this class to properties in the Order bean
-        binder = new BeanValidationBinder<>(SubmittedForm.class);
+        binder = new BeanValidationBinder<>(PersonalForm.class);
         // Bindings are done in the order the fields appear on the screen as we
         // report validation errors for the first invalid field and it is most
         // intuitive for the user that we start from the top if there are

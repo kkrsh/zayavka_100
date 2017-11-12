@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.vaadin.viritin.layouts.MFormLayout;
 import org.vaadin.viritin.layouts.MHorizontalLayout;
 import org.vaadin.viritin.layouts.MVerticalLayout;
-import ru.balletacademy.zayavlenie.backend.data.EducationalProgramType;
-import ru.balletacademy.zayavlenie.backend.data.entity.SubmittedForm;
+import ru.balletacademy.zayavlenie.backend.data.entity.PersonalForm;
 
 import javax.annotation.PostConstruct;
 
@@ -31,6 +30,8 @@ public class SpoPerevodView extends SpoViewDesign implements View
     public void enter(ViewChangeListener.ViewChangeEvent event)
     {
         presenter.enterView(event);
+        ok.setEnabled(true);
+        ok.setDisableOnClick(true);
     }
 
     @PostConstruct
@@ -50,12 +51,25 @@ public class SpoPerevodView extends SpoViewDesign implements View
         );
 
         cancel.addClickListener(e -> presenter.cancelPressed());
-        ok.addClickListener(e -> presenter.okPressed());
+        ok.addClickListener(e -> {
+            if (presenter.okPressed())
+            {
+                Notification.show("Спасибо. Ваше заявление сформировано.", Notification.Type.HUMANIZED_MESSAGE);
+                presenter.allDone();
+            } else {
+                ok.setEnabled(true); // error - re-enable ok button
+            }
+        });
     }
 
-    public void setOrder(SubmittedForm form)
+    public void setOrder(PersonalForm form)
     {
         binder.setBean(form);
         hasChanges = false;
+    }
+
+    public PersonalForm getForm()
+    {
+        return binder.getBean();
     }
 }

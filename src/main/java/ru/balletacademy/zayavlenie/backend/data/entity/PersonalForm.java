@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
-public class SubmittedForm extends AbstractEntity
+public class PersonalForm extends AbstractEntity
 {
 
 // -- ФИО родителя/опекуна
@@ -86,7 +86,7 @@ public class SubmittedForm extends AbstractEntity
     @Size(min = 1, max = 150)
     private String parentEmail;
 
-    public SubmittedForm() {
+    public PersonalForm() {
         // Empty constructor is needed by Spring Data / JPA
     }
 
