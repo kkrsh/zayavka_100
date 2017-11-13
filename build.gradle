@@ -29,6 +29,10 @@ idea {
 
 apply plugin: 'org.springframework.boot'
 
+springBoot {
+    executable = true
+}
+
 jar {
     baseName = 'za-yavlenie'
     version = '0.1.0'
