@@ -29,23 +29,14 @@ idea {
 
 apply plugin: 'org.springframework.boot'
 
-//springBoot {
-//    executable = true
-//}
+springBoot {
+    executable = true
+}
 
-//jar {
-//    baseName = 'za-yavlenie'
-//    version = '0.1.0'
-//}
-//
-//jar {
-//    manifest {
-//        attributes(
-//                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-//                'Main-Class': 'ru.balletacademy.zayavlenie.Application'
-//        )
-//    }
-//}
+jar {
+    baseName = 'zayavlenie'
+    version = '0.1.0'
+}
 
 group = 'ru.balletacademy'
 version = '0.0.1-SNAPSHOT'
@@ -80,7 +71,8 @@ dependencies {
 
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
     compile("org.glassfish:javax.el") // because Vaadin BeanValidationBinder
-    compile("javax.interceptor:javax.interceptor-api:1.2") // because JDK8 - Error “class file for javax.interceptor.InterceptorBinding not found” when trying to generate javadoc using Maven javadoc plugin
+    compile("javax.interceptor:javax.interceptor-api:1.2")
+    // because JDK8 - Error “class file for javax.interceptor.InterceptorBinding not found” when trying to generate javadoc using Maven javadoc plugin
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile("junit:junit")
@@ -89,13 +81,13 @@ dependencies {
     runtime("com.h2database:h2")
 }
 
-jar {
-    manifest {
-        attributes(
-                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-                'Main-Class': 'ru.balletacademy.zayavlenie.Application'
-        )
-    }
-}
+//jar {
+//    manifest {
+//        attributes(
+//                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+//                'Main-Class': 'ru.balletacademy.zayavlenie.Application'
+//        )
+//    }
+//}
 
 
