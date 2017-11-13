@@ -27,22 +27,11 @@ public enum EducationalProgramType
         this.displayName = displayName;
     }
 
-    /**
-     * Gets a version of the enum identifier in a human friendly format.
-     *
-     * @return a human friendly version of the identifier
-     */
     public String getDisplayName()
     {
         return displayName;
     }
 
-    /**
-     * Gets a enum value for which {@link #getDisplayName()} returns the given
-     * string. Match is case-insensitive.
-     *
-     * @return the enum value with a matching display name
-     */
     public static EducationalProgramType forDisplayName(String displayName)
     {
         for (EducationalProgramType type : values())
