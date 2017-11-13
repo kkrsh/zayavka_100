@@ -1,8 +1,5 @@
 debug: false
 
-server:
-  port: ${PORT:8080}
-
 spring:
   jpa:
     hibernate:

@@ -80,14 +80,3 @@ dependencies {
     runtime('org.postgresql:postgresql')
     runtime("com.h2database:h2")
 }
-
-//jar {
-//    manifest {
-//        attributes(
-//                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-//                'Main-Class': 'ru.balletacademy.zayavlenie.Application'
-//        )
-//    }
-//}
-
-

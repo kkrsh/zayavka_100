@@ -1,0 +1,11 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    maxActive: 10
+    maxIdle: 5
+    minIdle: 2
+    initialSize: 2
+    removeAbandoned: true
