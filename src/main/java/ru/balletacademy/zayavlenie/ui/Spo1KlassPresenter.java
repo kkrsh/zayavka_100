@@ -11,38 +11,31 @@ import ru.balletacademy.zayavlenie.backend.service.FormService;
 
 @SpringComponent
 @ViewScope
-public class SpoPerevodPresenter extends SpoPresenter
+public class Spo1KlassPresenter extends SpoPresenter
 {
-    private SpoPerevodView view;
+    private Spo1KlassView view;
 
     @Autowired
-    public SpoPerevodPresenter(FormService formService)
+    public Spo1KlassPresenter(FormService formService)
     {
         super(formService);
     }
 
-    void init(SpoPerevodView view)
+    void init(Spo1KlassView view)
     {
         this.view = view;
 
+        view.programType.setVisible(false);
         view.programType.setItemCaptionGenerator(
                 (ItemCaptionGenerator<EducationalProgramType>) EducationalProgramType::getDisplayName);
-        view.programType
-                .setItems(
-                        EducationalProgramType.CLASS_2,
-                        EducationalProgramType.CLASS_3,
-                        EducationalProgramType.CLASS_4,
-                        EducationalProgramType.CLASS_5,
-                        EducationalProgramType.CURS_1,
-                        EducationalProgramType.CURS_2,
-                        EducationalProgramType.CURS_3
-                );
+        view.programType.setItems(EducationalProgramType.CLASS_1);
         view.programType.setEmptySelectionAllowed(false);
     }
 
     void enterView(ViewChangeListener.ViewChangeEvent event)
     {
         PersonalForm form = new PersonalForm();
+        form.setProgramType(EducationalProgramType.CLASS_1);
         refreshView(form);
         lockView();
     }

@@ -2,6 +2,7 @@ package ru.balletacademy.zayavlenie.ui;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.shared.ui.ContentMode;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
@@ -22,8 +23,14 @@ public class SelectionView extends VerticalLayout implements View
     {
         setSizeFull();
         addStyleName("app-shell");
+        final Label attention = new Label("Это тестовая версия! Не вводите настоящие данные!",
+                ContentMode.HTML);
+        attention.addStyleName(ValoTheme.LABEL_FAILURE);
         addComponent(
                 new MVerticalLayout()
+                        .add(attention)
+                        .add(new Label("<span/>", ContentMode.HTML))
+                        .add(new Label("<span/>", ContentMode.HTML))
                         .add(new Label("Выберете желаемый тип заявления:"))
                         .add(createNavigationBar())
         );

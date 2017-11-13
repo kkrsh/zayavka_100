@@ -11,10 +11,10 @@ import org.slf4j.LoggerFactory;
 // -- значения: 2,3,4,5, A,B,C, K,L,M
 public enum EducationalProgramType
 {
-    CLASS_1("1", null),
+    CLASS_1("1", "1 класс"),
     CLASS_2("2", "2 класс"), CLASS_3("3", "3 класс"), CLASS_4("4", "4 класс"), CLASS_5("5", "5 класс"),
     CURS_1("A", "I курс"), CURS_2("B", "II курс"), CURS_3("C", "III курс"),
-    K("K", null), L("L", null), M("M", null);
+    K("K", "Предпроф"), L("L", "Проф"), M("M", "Основы");
 
     private static Logger logger = LoggerFactory.getLogger(EducationalProgramType.class);
 
