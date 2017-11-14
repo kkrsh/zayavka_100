@@ -3,6 +3,7 @@ server:
 
 spring:
   datasource:
+    url: ${JDBC_DATABASE_URL}
     driver-class-name: org.postgresql.Driver
     maxActive: 10
     maxIdle: 5
