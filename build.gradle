@@ -1,0 +1,82 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.8.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins {
+    id 'com.devsoap.plugin.vaadin' version '1.2.0'
+}
+
+javadoc {
+    options.encoding = 'UTF-8'
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+idea {
+    module {
+        inheritOutputDirs = true
+    }
+}
+
+apply plugin: 'org.springframework.boot'
+
+springBoot {
+    executable = true
+}
+
+jar {
+    baseName = 'zayavlenie'
+    version = '0.1.0'
+}
+
+group = 'ru.balletacademy'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
+    maven { url "http://oss.sonatype.org/content/repositories/vaadin-snapshots/" }
+    maven { url "http://maven.vaadin.com/vaadin-addons/" }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+ext {
+    vaadinVersion = '8.1.0'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "com.vaadin:vaadin-bom:${vaadinVersion}"
+    }
+}
+
+dependencies {
+
+    compile('org.springframework.boot:spring-boot-starter')
+    compile('org.liquibase:liquibase-core')
+
+    compile("com.vaadin:vaadin-spring-boot-starter")
+    compile("org.vaadin:viritin:2.0")
+
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.glassfish:javax.el") // because Vaadin BeanValidationBinder
+    compile("javax.interceptor:javax.interceptor-api:1.2")
+    // because JDK8 - Error “class file for javax.interceptor.InterceptorBinding not found” when trying to generate javadoc using Maven javadoc plugin
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile("junit:junit")
+
+    runtime('org.postgresql:postgresql')
+    runtime("com.h2database:h2")
+}
